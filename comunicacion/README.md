@@ -22,7 +22,7 @@ Visuales (Remotion): `/home/efren-cyborg/1.Cyborg-Town/4.Music-Town/4.remotion`
 
 | Marcador | Qué va |
 |---|---|
-| `[ENLACE]` | URL pública del sitio una vez desplegado |
+| `https://tu-ruta-rock.v1tr0.com` | URL pública del sitio una vez desplegado |
 | `[TU NOMBRE]` | Tu nombre para firmar el correo |
 | `[CELULAR]` | Opcional, para el correo formal |
 

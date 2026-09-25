@@ -4,7 +4,7 @@ Visual base: Remotion → `RutaRock-Historia-Lanzamiento` (1080×1920).
 
 | # | Día | Visual | Stickers / texto |
 |---|---|---|---|
-| 1 | Lanzamiento | `RutaRock-Historia-Lanzamiento` | Sticker **enlace** → [ENLACE] · texto «Arma tu ruta 🤘» |
+| 1 | Lanzamiento | `RutaRock-Historia-Lanzamiento` | Sticker **enlace** → https://tu-ruta-rock.v1tr0.com · texto «Arma tu ruta 🤘» |
 | 2 | Lanzamiento | Compartir el reel | «Nuevo 🔥 Mira cómo funciona» |
 | 3 | Lanzamiento | Tu propia ruta exportada | Encuesta: «¿Qué día vas?» Sáb / Dom / Lun / Los 3 |
 | 4 | +1 día | `RutaRock-Historia-GraciasArte` | Mención **@tavogaravato** · «El copetón es suyo 🐦» |

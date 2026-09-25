@@ -10,7 +10,7 @@ Soy @efren.fotograma. Tu copetón para los 30 años de Rock al Parque me voló l
 como imagen principal de una herramienta gratuita que hice para que la gente **arme su ruta de
 conciertos** en el festival:
 
-👉 [ENLACE]
+👉 https://tu-ruta-rock.v1tr0.com
 
 Te acredito en la pantalla de entrada, en el pie del sitio y en el aviso de derechos del
 repositorio («Imagen oficial 30 años · Tavo Garavato / Idartes»). Cuando lance el reel y los

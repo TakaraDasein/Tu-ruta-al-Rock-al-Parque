@@ -11,7 +11,7 @@ Mi nombre es [TU NOMBRE] (@efren.fotograma). Soy asistente del festival y desarr
 por iniciativa propia y sin ánimo de lucro, **«Ruta de conciertos · Rock al Parque 30 años»**,
 una herramienta web gratuita para que el público planee su recorrido por los cuatro escenarios:
 
-**[ENLACE]**
+**https://tu-ruta-rock.v1tr0.com**
 
 Qué permite hacer:
 

@@ -11,7 +11,7 @@ Soy @efren.fotograma. Para los 30 años hice una herramienta web gratuita para q
 los horarios y cuánto caminas entre escenarios. Además exporta la ruta como imagen para
 historias y como calendario del celular.
 
-👉 [ENLACE]
+👉 https://tu-ruta-rock.v1tr0.com
 
 Es una iniciativa de fans, sin ánimo de lucro. Acredita la imagen oficial del copetón
 (Tavo Garavato / Idartes) y aclara que no es oficial.
