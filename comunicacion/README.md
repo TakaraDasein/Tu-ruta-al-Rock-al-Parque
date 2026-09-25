@@ -12,7 +12,8 @@ comunicacion/
     ├── 01-reel-lanzamiento.md
     ├── 02-post-lanzamiento.md
     ├── 03-historias.md
-    └── 04-gracias-arte-oficial.md
+    ├── 04-gracias-arte-oficial.md
+    └── 05-reel-tutorial.md
 ```
 
 Visuales (Remotion): `/home/efren-cyborg/1.Cyborg-Town/4.Music-Town/4.remotion`
@@ -34,6 +35,7 @@ Visuales (Remotion): `/home/efren-cyborg/1.Cyborg-Town/4.Music-Town/4.remotion`
 | Dom 28 – Lun 29 sep | Enviar los 3 comunicados (correo + DMs) |
 | Mié 1 – Jue 2 oct | Si no hay respuesta, un único recordatorio breve |
 | Sáb 4 oct | Lanzamiento: reel + post carrusel + historias |
+| Mar 7 oct | Reel tutorial (fijarlo en el perfil hasta el festival) |
 | Mar 7 – Jue 9 oct | Historias de recordatorio («¿ya armaste tu ruta?») |
 | Vie 10 – Lun 12 oct | Historias en vivo con rutas de la gente (repostear menciones) |
 

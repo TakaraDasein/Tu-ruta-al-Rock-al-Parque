@@ -59,7 +59,7 @@ const cargarTodo = async (page) => {
 await rm(DESTINO, { recursive: true, force: true });
 await mkdir(DESTINO, { recursive: true });
 const navegador = await chromium.launch({ executablePath: CHROMIUM });
-const datos = { sitio: URL_SITIO, ruta: RUTA, movil: {}, escritorio: {} };
+const datos = { sitio: URL_SITIO, ruta: RUTA, movil: {}, escritorio: {}, tutorial: {} };
 
 /* ── Celular: lista, toque por toque ── */
 {
@@ -147,6 +147,98 @@ const datos = { sitio: URL_SITIO, ruta: RUTA, movil: {}, escritorio: {} };
 
   const [descarga] = await Promise.all([page.waitForEvent('download'), page.click('[data-accion="imagen"]')]);
   await descarga.saveAs(join(DESTINO, 'historia-exportada.png'));
+  await page.close();
+}
+
+/* ── Tutorial: pantallas completas del celular, paso a paso, con el punto de cada toque ── */
+{
+  const page = await navegador.newPage({
+    viewport: { width: MOVIL.width, height: MOVIL.height },
+    deviceScaleFactor: MOVIL.escala,
+    isMobile: true,
+    hasTouch: true,
+  });
+  const toques = {};
+  const centro = async (selector) => {
+    const r = await page.locator(selector).first().boundingBox();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  };
+  const foto = (nombre) => page.screenshot({ path: join(DESTINO, `tutorial-${nombre}.jpg`), type: 'jpeg', quality: 86 });
+
+  // 1. Splash → «Crear mi ruta» → pestañas de día
+  await page.goto(URL_SITIO);
+  await page.evaluate(() => {
+    sessionStorage.clear();
+    localStorage.clear();
+    localStorage.setItem('ruta-rap-2026-dia', 'sab');
+  });
+  await page.reload();
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(2800); // animación de entrada del splash
+  await foto('01-splash');
+  toques.entrar = await centro('[data-entrar]');
+  await page.click('[data-entrar]');
+  await page.waitForTimeout(1000);
+  await cargarTodo(page);
+  await foto('02-inicio');
+  toques.domingo = await centro('[data-tab="dom"]');
+  await page.click('[data-tab="dom"]');
+  await page.waitForTimeout(500);
+  await foto('03-domingo');
+  await page.click('[data-tab="sab"]');
+
+  // 2. Con la ruta armada: lista → abrir «Mi ruta» → cadena → mapa → ampliar → exportar
+  await page.evaluate((ids) => localStorage.setItem('ruta-rap-2026', JSON.stringify(ids)), RUTA);
+  await page.reload();
+  await cargarTodo(page);
+  await page.locator('.opcion[data-id="sab-plaza-6"]').scrollIntoViewIfNeeded();
+  await page.evaluate(() => scrollBy(0, 120));
+  await page.waitForTimeout(300);
+  await foto('04-lista');
+  toques.miRuta = await centro('[data-asa]');
+  await page.click('[data-asa]');
+  await page.waitForTimeout(500);
+  const panel = (y) => page.evaluate((y) => document.querySelector('.panel-contenido').scrollTo(0, y), y);
+  const alPanel = (sel) =>
+    page.evaluate((sel) => {
+      const c = document.querySelector('.panel-contenido');
+      const el = document.querySelector(sel);
+      c.scrollTo(0, el.getBoundingClientRect().top - c.getBoundingClientRect().top + c.scrollTop - 12);
+    }, sel);
+  await alPanel('[data-cadena]');
+  await page.waitForTimeout(300);
+  await foto('05-cadena');
+  await alPanel('[data-mapa-figura]');
+  await page.waitForTimeout(600);
+  await foto('06-mapa');
+  toques.ampliar = await centro('[data-ampliar-mapa]');
+  await page.click('[data-ampliar-mapa]');
+  await page.waitForTimeout(700);
+  await page.evaluate(() => document.querySelector('[data-mapa-figura]').scrollTo(150, 0));
+  await page.waitForTimeout(300);
+  await foto('07-mapa-ampliado');
+  await page.click('[data-ampliar-mapa]');
+  await page.waitForTimeout(300);
+  await alPanel('.acciones');
+  await page.waitForTimeout(300);
+  await foto('08-acciones');
+  toques.exportar = await centro('[data-accion="imagen"]');
+
+  // 3. Tip: filtro «Mi ruta»
+  await page.click('[data-asa]');
+  await page.waitForTimeout(400);
+  await page.locator('[data-controles]').scrollIntoViewIfNeeded();
+  await page.evaluate(() => scrollBy(0, -140));
+  await page.waitForTimeout(300);
+  await foto('09-filtro-antes');
+  toques.filtro = await centro('[data-filtro="ruta"]');
+  await page.click('[data-filtro="ruta"]');
+  await page.waitForTimeout(400);
+  await foto('10-filtro-ruta');
+  await panel(0);
+
+  datos.tutorial = { escala: MOVIL.escala, ancho: MOVIL.width, alto: MOVIL.height, toques };
+  console.log('· tutorial: 10 pantallas');
   await page.close();
 }
 
