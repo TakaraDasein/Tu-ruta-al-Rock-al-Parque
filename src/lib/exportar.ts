@@ -146,12 +146,11 @@ export const generarImagen = async (ids: Iterable<string>, diaId: DiaId): Promis
   const lienzo = Object.assign(document.createElement('canvas'), { width: W, height: H });
   const ctx = lienzo.getContext('2d')!;
 
-  // Fondo: turquesa arriba → ocre/naranja abajo, como el cartel.
+  // Fondo: papel de cartel, como la web.
   const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, '#6db2aa');
-  grad.addColorStop(0.35, '#86a58e');
-  grad.addColorStop(0.7, '#b8924f');
-  grad.addColorStop(1, '#d9862f');
+  grad.addColorStop(0, '#ece2c8');
+  grad.addColorStop(0.55, '#e2d3b0');
+  grad.addColorStop(1, '#d6c29a');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, W, H);
   for (const g of generarSalpicaduras(dia.numero * 97, W, H, 18)) {

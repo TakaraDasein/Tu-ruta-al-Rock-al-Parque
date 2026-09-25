@@ -43,15 +43,15 @@ import { AUTOR } from '../data/autor';
     font: 700 1rem/1 var(--f-cond);
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--crema);
-    text-shadow: 0 1px 0 rgb(0 0 0 / 0.35);
+    color: var(--sobre-fondo);
+    text-shadow: var(--sombra-sobre-fondo);
   }
   .antetitulo a {
     color: inherit;
     letter-spacing: 0.12em;
     text-transform: none;
     text-decoration: none;
-    border-bottom: 2px solid rgb(241 236 208 / 0.5);
+    border-bottom: 2px solid color-mix(in srgb, currentColor 50%, transparent);
   }
   .antetitulo a:hover {
     border-color: var(--crema);

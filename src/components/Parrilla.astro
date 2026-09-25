@@ -156,7 +156,7 @@ for (let m = HORA_INICIO; m <= HORA_FIN; m += 30) marcas.push(m);
     padding-top: 20px;
     background-image: repeating-linear-gradient(
       to bottom,
-      rgb(241 236 208 / 0.22) 0 1px,
+      var(--linea) 0 1px,
       transparent 1px calc(30 * var(--ppm))
     );
     background-position: 0 20px;
@@ -171,7 +171,7 @@ for (let m = HORA_INICIO; m <= HORA_FIN; m += 30) marcas.push(m);
     border-left: 2px solid rgb(0 0 0 / 0.1);
   }
   .columna:nth-child(odd) {
-    background: rgb(0 0 0 / 0.05);
+    background: var(--columna-alterna);
   }
 
   /* ── Nodo = concierto ── */
