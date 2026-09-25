@@ -302,23 +302,37 @@ import { AUTOR } from '../data/autor';
     }
     .splash-rejilla {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 14px;
       width: calc(100% - 32px);
       padding: 20px 0 32px;
     }
     .arte {
-      max-height: 42vh;
+      max-height: 36vh;
       aspect-ratio: auto;
-      height: 42vh;
+      height: 36vh;
       border-radius: 200px 200px 6px 6px;
     }
     .logo {
-      width: 150px;
-      margin-bottom: 12px;
+      width: 130px;
+      margin-bottom: 8px;
+    }
+    .firma {
+      margin-top: 14px;
     }
     .entrar {
       width: 100%;
       justify-content: center;
+    }
+  }
+
+  /* Celulares bajos (p. ej. 667 px): que la firma quepa sin desplazar */
+  @media (max-width: 760px) and (max-height: 700px) {
+    .arte {
+      height: 29vh;
+      max-height: 29vh;
+    }
+    .bajada {
+      display: none;
     }
   }
 
