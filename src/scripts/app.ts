@@ -243,7 +243,8 @@ const pintarMapa = () => {
     const cx = (a.x + b.x) / 2 - uy * curva;
     const cy = (a.y + b.y) / 2 + ux * curva;
     const path = document.createElementNS(SVG, 'path');
-    path.setAttribute('d', `M${a.x + ux * 20},${a.y + uy * 20} Q${cx},${cy} ${b.x - ux * 24},${b.y - uy * 24}`);
+    // Los marcadores miden ~26 px: la flecha arranca y termina en su borde.
+    path.setAttribute('d', `M${a.x + ux * 16},${a.y + uy * 16} Q${cx},${cy} ${b.x - ux * 19},${b.y - uy * 19}`);
     path.setAttribute('class', `salto-mapa ${t.estado}`);
     path.setAttribute('marker-end', 'url(#flecha)');
     capa.append(path);
@@ -392,6 +393,21 @@ for (const b of $$<HTMLButtonElement>('[data-vista]'))
     escribir(CLAVE_VISTA, vista);
     aplicarVista();
   });
+
+// Mapa a pantalla completa (útil en el celular).
+const figuraMapa = $<HTMLElement>('[data-mapa-figura]');
+const botonMapa = $<HTMLButtonElement>('[data-ampliar-mapa]');
+const ampliarMapa = (abrir: boolean) => {
+  figuraMapa.classList.toggle('ampliado', abrir);
+  botonMapa.setAttribute('aria-expanded', String(abrir));
+  botonMapa.setAttribute('aria-label', abrir ? 'Cerrar mapa' : 'Ampliar mapa');
+  document.documentElement.style.overflow = abrir ? 'hidden' : '';
+  if (abrir) medir('ampliar-mapa');
+};
+botonMapa.addEventListener('click', () => ampliarMapa(!figuraMapa.classList.contains('ampliado')));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && figuraMapa.classList.contains('ampliado')) ampliarMapa(false);
+});
 
 $('[data-asa]').addEventListener('click', (e) => {
   const abierto = panel.classList.toggle('abierto');

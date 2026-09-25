@@ -1,56 +1,94 @@
 ---
 import { ESCENARIOS } from '../data/programacion';
-import { ACCESOS, CONTORNO, MAPA_ALTO, MAPA_ANCHO, POSICION_ESCENARIO, SENDEROS } from '../data/mapa';
----
-<figure class="mapa">
-  <svg
-    viewBox={`0 0 ${MAPA_ANCHO} ${MAPA_ALTO}`}
-    role="img"
-    aria-labelledby="mapa-titulo"
-    data-mapa
-  >
-    <title id="mapa-titulo">Mapa esquemático del Parque Simón Bolívar con los escenarios</title>
-    <defs>
-      <marker id="flecha" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-        <path d="M0 0 10 5 0 10z" fill="context-stroke" />
-      </marker>
-    </defs>
+import {
+  ACCESOS,
+  MAPA_ALTO,
+  MAPA_ANCHO,
+  METROS_POR_UNIDAD,
+  ORTOFOTO,
+  POSICION_ESCENARIO,
+  REFERENCIAS,
+} from '../data/mapa';
 
-    <path class="contorno" d={CONTORNO} />
-    <ellipse class="lago" cx="330" cy="170" rx="34" ry="46" transform="rotate(-25 330 170)" />
-    {SENDEROS.map((d) => <path class="sendero" d={d} />)}
+const pct = (x: number, y: number) => `left:${((x / MAPA_ANCHO) * 100).toFixed(2)}%;top:${((y / MAPA_ALTO) * 100).toFixed(2)}%`;
+// [texto corto en el panel, texto completo en el mapa ampliado]
+const PRECISION = {
+  exacta: null,
+  aproximada: ['aprox.', 'ubicación aproximada'],
+  'por-confirmar': ['por confirmar', 'ubicación por confirmar'],
+} as const;
+const escala = 100 / METROS_POR_UNIDAD; // unidades SVG que miden 100 m
+---
+<figure class="mapa" data-mapa-figura>
+  <div class="mapa-marco" style={`aspect-ratio:${MAPA_ANCHO}/${MAPA_ALTO}`}>
+    <img
+      class="mapa-foto"
+      src={ORTOFOTO.ruta(800)}
+      srcset={`${ORTOFOTO.ruta(800)} 800w, ${ORTOFOTO.ruta(1600)} 1600w`}
+      sizes="(max-width: 960px) 100vw, 400px"
+      alt="Vista aérea del Parque Simón Bolívar con los escenarios de Rock al Parque"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="mapa-velo" aria-hidden="true"></div>
+
+    <svg viewBox={`0 0 ${MAPA_ANCHO} ${MAPA_ALTO}`} data-mapa aria-hidden="true">
+      <defs>
+        <marker id="flecha" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M0 0 10 5 0 10z" fill="context-stroke" />
+        </marker>
+      </defs>
+      <g data-mapa-ruta></g>
+      <g class="escala" transform={`translate(${MAPA_ANCHO - escala - 14} ${MAPA_ALTO - 14})`}>
+        <path d={`M0 -4 V0 H${escala} V-4`} />
+        <text x={escala / 2} y="-7">100 m</text>
+      </g>
+      <g class="norte" transform="translate(18 22)">
+        <path d="M0 -12 6 6 0 2 -6 6z" />
+        <text y="18">N</text>
+      </g>
+    </svg>
+
+    {REFERENCIAS.map((r) => (
+      <span class="referencia" style={pct(r.x, r.y)}>{r.nombre}</span>
+    ))}
 
     {ACCESOS.map((a) => (
-      <g class="acceso" transform={`translate(${a.x} ${a.y})`}>
-        <rect x="-9" y="-9" width="18" height="18" />
-        <path d="M-3 -5 3 0 -3 5" />
-      </g>
+      <span class="acceso" style={pct(a.x, a.y)}>
+        <span class="acceso-icono" aria-hidden="true">➜</span>
+        <span class="acceso-texto">{a.nombre}</span>
+      </span>
     ))}
-    <text class="rotulo-via" x="150" y="24" transform="rotate(-11 150 24)">ACCESO CRA. 60</text>
-    <text class="rotulo-via" x="10" y="160" transform="rotate(-90 10 160)">ACCESO CALLE 63</text>
-
-    <g data-mapa-ruta></g>
 
     {ESCENARIOS.map((e) => {
       const p = POSICION_ESCENARIO[e.id];
       return (
-        <g class:list={['escenario', { provisional: !p.confirmado }]} data-marca={e.id} transform={`translate(${p.x} ${p.y})`}>
-          <circle class="escenario-halo" r="24" />
-          <circle class="escenario-punto" r="15" />
-          <text class="escenario-sigla" dy="1">{e.corto}</text>
-          <text class="escenario-orden" data-orden y="-30"></text>
-        </g>
+        <div class:list={['escenario', `prec-${p.precision}`]} data-marca={e.id} data-lado={p.etiqueta} style={pct(p.x, p.y)}>
+          <span class="escenario-punto" aria-hidden="true">{e.corto}</span>
+          <span class="escenario-chip">
+            <span class="escenario-nombre">
+              <span class="escenario-tipo">Escenario</span> {p.nombre.replace(/^Escenario /, '')}
+            </span>
+            {PRECISION[p.precision] && (
+              <span class="escenario-nota">
+                <span class="nota-corta">{PRECISION[p.precision]![0]}</span>
+                <span class="nota-larga">{PRECISION[p.precision]![1]}</span>
+              </span>
+            )}
+          </span>
+          <span class="escenario-orden" data-orden></span>
+        </div>
       );
     })}
 
-    <g class="brujula" transform="translate(60 286)">
-      <path d="M0 -14 0 14 M-14 0 14 0" />
-      <text y="-18">E</text>
-    </g>
-  </svg>
+    <button type="button" class="mapa-ampliar" data-ampliar-mapa aria-expanded="false" aria-label="Ampliar mapa">
+      <span class="icono-ampliar" aria-hidden="true">⤢</span><span class="icono-cerrar" aria-hidden="true">✕</span>
+    </button>
+  </div>
   <p class="caminata" data-caminata></p>
   <figcaption>
-    Esquema basado en el mapa oficial 2025. El escenario <strong>BBC</strong> es nuevo: ubicación por confirmar.
+    <a href={ORTOFOTO.fuente} target="_blank" rel="noopener">{ORTOFOTO.credito}</a> · Plaza de Eventos: OpenStreetMap.
+    Eco, Bio y accesos: aproximados según el mapa oficial 2025. <strong>BBC</strong> es nuevo: por confirmar.
   </figcaption>
 </figure>
 
@@ -58,93 +96,278 @@ import { ACCESOS, CONTORNO, MAPA_ALTO, MAPA_ANCHO, POSICION_ESCENARIO, SENDEROS 
   .mapa {
     margin: 0 20px 16px;
   }
-  svg {
-    display: block;
-    width: 100%;
-    height: auto;
+  .mapa-marco {
+    position: relative;
+    overflow: hidden;
     background: #2a4a3f;
+    border: 2px solid rgb(241 236 208 / 0.18);
   }
-  .contorno {
-    fill: #3b6152;
+  .mapa-foto {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.8) brightness(0.8) contrast(1.05);
+  }
+  .mapa-velo {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 45%, rgb(15 26 22 / 0.45));
+  }
+  svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* Escala y norte */
+  .escala path {
+    fill: none;
     stroke: var(--crema);
-    stroke-width: 2;
-    stroke-dasharray: 2 5;
-    stroke-opacity: 0.5;
+    stroke-width: 1.6;
   }
-  .lago {
-    fill: #6db2aa;
-    opacity: 0.55;
-  }
-  .sendero {
-    fill: none;
-    stroke: #f08a24;
-    stroke-width: 4;
-    stroke-linecap: round;
-    opacity: 0.45;
-  }
-  .acceso rect {
-    fill: var(--naranja);
-  }
-  .acceso path {
-    fill: none;
-    stroke: var(--tinta);
-    stroke-width: 2.5;
-  }
-  .rotulo-via {
+  .escala text,
+  .norte text {
     fill: var(--crema);
-    opacity: 0.6;
-    font: 700 10px var(--f-cond);
-    letter-spacing: 0.14em;
-  }
-  .escenario-halo {
-    fill: var(--crema);
-    opacity: 0.15;
-  }
-  .escenario-punto {
-    fill: var(--crema);
-    stroke: var(--tinta);
-    stroke-width: 3;
-  }
-  .escenario-sigla {
-    fill: var(--tinta);
-    font: 700 10px var(--f-cond);
-    text-anchor: middle;
-    dominant-baseline: central;
-  }
-  .escenario-orden {
-    fill: var(--crema);
-    font: 700 13px var(--f-cond);
-    letter-spacing: 0.04em;
+    font: 700 9px var(--f-cond);
+    letter-spacing: 0.08em;
     text-anchor: middle;
     paint-order: stroke;
-    stroke: var(--tinta);
-    stroke-width: 4px;
+    stroke: rgb(15 26 22 / 0.8);
+    stroke-width: 3px;
   }
-  .provisional .escenario-punto {
-    stroke-dasharray: 4 3;
-    fill: rgb(241 236 208 / 0.6);
-  }
-  .escenario.en-ruta .escenario-punto {
-    fill: var(--dia);
-    stroke: var(--crema);
-  }
-  .escenario.en-ruta .escenario-sigla {
+  .norte path {
     fill: var(--crema);
+    stroke: rgb(15 26 22 / 0.8);
+    stroke-width: 1.5;
   }
-  .escenario.en-ruta .escenario-halo {
-    fill: var(--dia);
-    opacity: 0.35;
+
+  /* Capas HTML posicionadas en % sobre la foto */
+  .referencia,
+  .acceso,
+  .escenario {
+    position: absolute;
+    translate: -50% -50%;
+    white-space: nowrap;
   }
-  .brujula path {
-    stroke: var(--crema);
-    stroke-width: 2;
-    opacity: 0.6;
+  .referencia {
+    color: rgb(241 236 208 / 0.85);
+    font: italic 500 0.72rem/1 var(--f-cond);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.9);
+    pointer-events: none;
   }
-  .brujula text {
-    fill: var(--crema);
-    font: 700 11px var(--f-cond);
-    text-anchor: middle;
+  .acceso {
+    display: inline-flex;
+    gap: 3px;
+    align-items: center;
+    padding: 2px 5px 1px;
+    background: var(--naranja);
+    color: var(--tinta);
+    font: 700 0.62rem/1.2 var(--f-cond);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.5);
   }
+  .acceso-icono {
+    font-size: 0.7rem;
+  }
+  /* En el panel los accesos son solo flechas; con el mapa ampliado muestran su nombre */
+  .acceso-texto {
+    display: none;
+  }
+
+
+  .escenario {
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+  .escenario-punto {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 3px solid var(--tinta);
+    border-radius: 50%;
+    background: var(--crema);
+    color: var(--tinta);
+    font: 700 0.58rem/1 var(--f-cond);
+    box-shadow: 0 0 0 4px rgb(241 236 208 / 0.25), 0 2px 8px rgb(0 0 0 / 0.6);
+  }
+  .escenario-chip {
+    position: absolute;
+    display: grid;
+    padding: 3px 7px 2px;
+    background: var(--verde-header);
+    color: var(--crema);
+    border-left: 3px solid var(--crema);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.55);
+  }
+  .escenario-nombre {
+    font: 400 0.62rem/1.1 var(--f-display);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  /* En el panel: «Escenario» arriba y el nombre debajo, para que quepa entero */
+  .escenario-tipo {
+    display: block;
+    font: 700 0.52rem/1.1 var(--f-cond);
+    letter-spacing: 0.14em;
+    opacity: 0.8;
+  }
+
+
+  .nota-larga {
+    display: none;
+  }
+  /* Mapa ampliado en pantallas anchas: etiquetas en una línea, notas y accesos completos */
+  @media (min-width: 700px) {
+    .mapa:global(.ampliado) .acceso-texto,
+    .mapa:global(.ampliado) .nota-larga {
+      display: inline;
+    }
+    .mapa:global(.ampliado) .nota-corta {
+      display: none;
+    }
+    .mapa:global(.ampliado) .escenario-tipo {
+      display: inline;
+      font: inherit;
+      letter-spacing: inherit;
+      opacity: 1;
+    }
+  }
+  .escenario-nota {
+    font: 600 0.58rem/1.2 var(--f-cond);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  [data-lado='derecha'] .escenario-chip {
+    left: calc(100% + 6px);
+  }
+  [data-lado='izquierda'] .escenario-chip {
+    right: calc(100% + 6px);
+    border-left: 0;
+    border-right: 3px solid var(--crema);
+    text-align: right;
+  }
+  [data-lado='abajo'] .escenario-chip {
+    top: calc(100% + 6px);
+  }
+  [data-lado='arriba'] .escenario-chip {
+    bottom: calc(100% + 6px);
+  }
+  .escenario-orden {
+    position: absolute;
+    bottom: calc(100% + 2px);
+    padding: 1px 5px;
+    background: var(--dia);
+    color: var(--crema);
+    font: 700 0.7rem/1.2 var(--f-cond);
+    letter-spacing: 0.04em;
+  }
+  .escenario-orden:empty {
+    display: none;
+  }
+  .prec-aproximada .escenario-punto {
+    border-style: dashed;
+  }
+  .prec-por-confirmar .escenario-punto {
+    border-style: dashed;
+    background: rgb(241 236 208 / 0.65);
+  }
+  .prec-por-confirmar .escenario-chip {
+    opacity: 0.85;
+  }
+  .escenario:global(.en-ruta) .escenario-punto {
+    background: var(--dia);
+    border-color: var(--crema);
+    color: var(--crema);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--dia) 45%, transparent), 0 2px 8px rgb(0 0 0 / 0.6);
+  }
+  .escenario:global(.en-ruta) .escenario-chip {
+    border-color: var(--dia);
+  }
+
+  /* Ampliar a pantalla completa */
+  .mapa-ampliar {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--crema);
+    background: rgb(15 26 22 / 0.75);
+    color: var(--crema);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .icono-cerrar {
+    display: none;
+  }
+  .mapa:global(.ampliado) {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-content: center;
+    margin: 0;
+    padding: 16px;
+    background: #0f1a16;
+    overflow: auto;
+  }
+  .mapa:global(.ampliado) .mapa-marco {
+    width: min(100%, calc((100dvh - 140px) * 400 / 321), 1400px);
+  }
+  /* Celular: el mapa ampliado es más ancho que la pantalla y se recorre deslizando */
+  @media (max-width: 699px) {
+    .mapa:global(.ampliado) {
+      place-content: start;
+    }
+    .mapa:global(.ampliado) .mapa-marco {
+      width: 175vw;
+    }
+    .mapa:global(.ampliado) .mapa-ampliar {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+    .mapa:global(.ampliado) :is(.caminata, figcaption) {
+      position: sticky;
+      left: 0;
+      max-width: calc(100vw - 32px);
+    }
+  }
+  .mapa:global(.ampliado) .escenario-nombre {
+    font-size: clamp(0.72rem, 1.4vw, 1rem);
+  }
+  .mapa:global(.ampliado) .escenario-punto {
+    width: 32px;
+    height: 32px;
+  }
+  .mapa:global(.ampliado) .acceso {
+    font-size: clamp(0.62rem, 1vw, 0.8rem);
+  }
+  .mapa:global(.ampliado) .icono-ampliar {
+    display: none;
+  }
+  .mapa:global(.ampliado) .icono-cerrar {
+    display: block;
+  }
+  .mapa:global(.ampliado) :is(.caminata, figcaption) {
+    max-width: min(100vw - 32px, 1400px);
+  }
+
   svg :global(.salto-mapa) {
     fill: none;
     stroke: var(--crema);
@@ -185,7 +408,10 @@ import { ACCESOS, CONTORNO, MAPA_ALTO, MAPA_ANCHO, POSICION_ESCENARIO, SENDEROS 
   }
   figcaption {
     margin-top: 6px;
-    font: 500 0.8rem/1.3 var(--f-cond);
-    opacity: 0.7;
+    font: 500 0.78rem/1.3 var(--f-cond);
+    opacity: 0.75;
+  }
+  figcaption a {
+    color: inherit;
   }
 </style>
