@@ -10,15 +10,16 @@
   --f-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   color-scheme: light;
 
-  /* Fondo: papel de cartel (kraft impreso), como los afiches en stencil de la imagen 30 años */
+  /* Fondo: papel kraft de afiche (grano + fibras), como el stencil de la imagen 30 años */
+  --grano-papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .22 0 0 0 0 .1 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --fondo:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgb(255 255 255 / 0.35), transparent 70%),
-    linear-gradient(to bottom, #ece2c8, #e2d3b0 55%, #d6c29a) #e2d3b0;
+    var(--grano-papel),
+    linear-gradient(to bottom, #d4bb8c, #c6a672 55%, #b08c5a) #c6a672;
   --sobre-fondo: var(--tinta);
   --sombra-sobre-fondo: none;
   --linea: rgb(27 42 36 / 0.13);
   --columna-alterna: rgb(27 42 36 / 0.035);
-  --tarjeta: rgb(255 255 255 / 0.45);
+  --tarjeta: rgb(255 248 232 / 0.5);
   --riel: rgb(27 42 36 / 0.3);
 }
 
