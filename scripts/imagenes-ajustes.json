@@ -1,0 +1,59 @@
+{
+  "_nota": "Fuentes fijadas tras revisión manual (homónimos). Prioridad: manual > url > commons > deezer fijo > búsqueda automática. Deezer mezcla homónimos en un mismo perfil: si la foto no cuadra, usar la portada de un disco verificado (url).",
+  "consulta": {
+    "Claudio Narea Los Prisioneros": "Claudio Narea",
+    "Serú Girán": "Serú Girán",
+    "Gondwana & Quique Neira": "Gondwana",
+    "Iseo & Dodosound": "Iseo & Dodosound"
+  },
+  "soloDeezer": [],
+  "omitir": [],
+  "deezer": {
+    "Los Elefantes": 5934635,
+    "Nawal": 6222974,
+    "Lutter": 14832513,
+    "Medved": 262286851
+  },
+  "commons": {
+    "Info": "INFO_en_Wacken_Open_Air_2024.jpg",
+    "I.R.A.": "IRAbandacolombiana.jpg",
+    "Darkness": "Darkness_en_Xua_Rock_Fest_2016.jpg"
+  },
+  "url": {
+    "Narcocracia": {
+      "url": "https://f4.bcbits.com/img/0042288514_23.jpg",
+      "fuente": "Bandcamp",
+      "pagina": "https://narcocracia.bandcamp.com/"
+    },
+    "Nadie": {
+      "url": "https://www.rockombia.com/images/notas/rockombia_4ad46e8176da58af20cf6db9e0d3673d_1752812066.jpg",
+      "fuente": "Rockombia",
+      "pagina": "https://rockombia.com/noticias/nadie-30-anos-de-historia-punk-y-rocanrol-con-conciertos-en-bogota-y-medellin.html"
+    },
+    "No Dependiente": {
+      "url": "https://cartelrock.com/sites/default/files/2023-08/230324953_479580243203279_8706062262300429571_n_0.jpg",
+      "fuente": "Cartel Rock",
+      "pagina": "https://cartelrock.com/artista/no-dependiente"
+    },
+    "Casi": {
+      "url": "https://cdn-images.dzcdn.net/images/cover/8a94a7b0f44b4791dd004719d952be7e/500x500-000000-80-0-0.jpg",
+      "fuente": "Deezer",
+      "pagina": "https://www.deezer.com/album/931092251",
+      "credito": "Portada de «Si el Tiburón Se Come el Cable»"
+    },
+    "Laura Pérez": {
+      "url": "https://cdn-images.dzcdn.net/images/cover/026c357d157a88102a837a22a440bd58/500x500-000000-80-0-0.jpg",
+      "fuente": "Deezer",
+      "pagina": "https://www.deezer.com/album/686273081",
+      "credito": "Portada de «La Chinita»"
+    }
+  },
+  "manual": {
+    "Vein": {
+      "archivo": "scripts/imagenes-manuales/vein.jpg",
+      "fuente": "Radio UNAL",
+      "pagina": "https://radio.unal.edu.co/detalle/estreno-vein-1er-anuncio-festival-rock-al-parque-2026",
+      "credito": "Arte de «Revelai» (recorte)"
+    }
+  }
+}

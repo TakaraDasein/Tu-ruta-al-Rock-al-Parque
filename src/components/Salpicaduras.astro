@@ -1,0 +1,24 @@
+---
+import { generarSalpicaduras } from '../lib/azar';
+
+interface Props {
+  semilla?: number;
+}
+const { semilla = 30 } = Astro.props;
+const gotas = generarSalpicaduras(semilla, 1200, 2400, 22);
+---
+<svg class="salpicaduras" viewBox="0 0 1200 2400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+  {gotas.map((g) => <circle cx={g.x.toFixed(1)} cy={g.y.toFixed(1)} r={g.r.toFixed(1)} opacity={g.o.toFixed(2)} />)}
+</svg>
+
+<style>
+  .salpicaduras {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: var(--rojo);
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>

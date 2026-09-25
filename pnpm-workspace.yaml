@@ -1,0 +1,7 @@
+# Proyecto independiente (evita que lo absorba el workspace de ~).
+packages:
+  - '.'
+
+allowBuilds:
+  esbuild: true
+  sharp: true

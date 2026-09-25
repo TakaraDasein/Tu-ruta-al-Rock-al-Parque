@@ -1,0 +1,253 @@
+---
+// Vista simplificada para celular: conciertos en orden de hora, agrupados por franja.
+import { CONCIERTOS, ESCENARIOS, type Dia } from '../data/programacion';
+import { aMinutos, duracion, formatoDuracion } from '../lib/tiempo';
+import { imagenDe, iniciales } from '../lib/imagenes';
+
+interface Props {
+  dia: Dia;
+}
+const { dia } = Astro.props;
+
+const delDia = CONCIERTOS.filter((c) => c.dia === dia.id).sort(
+  (a, b) => aMinutos(a.inicio) - aMinutos(b.inicio) || ESCENARIOS.findIndex((e) => e.id === a.escenario) - ESCENARIOS.findIndex((e) => e.id === b.escenario),
+);
+const franjas = new Map<string, typeof delDia>();
+for (const c of delDia) {
+  const hora = `${c.inicio.slice(0, 2)}:00`;
+  franjas.set(hora, [...(franjas.get(hora) ?? []), c]);
+}
+const nombreEsc = (id: string) => ESCENARIOS.find((e) => e.id === id)!;
+---
+<section class="lista" data-lista={dia.id} aria-label={`Conciertos del ${dia.nombre.toLowerCase()}`} hidden>
+  <h2 class="sr-only">Conciertos del {dia.nombre.toLowerCase()} {dia.numero}</h2>
+  {[...franjas].map(([hora, conciertos]) => (
+    <div class="franja" data-franja>
+      <h3 class="franja-hora">{hora}</h3>
+      <ul>
+        {conciertos.map((c) => (
+          <li data-item data-esc={c.escenario}>
+            <button class="opcion" type="button" data-id={c.id} aria-pressed="false">
+              <span class="opcion-nodo" aria-hidden="true"></span>
+              <span class="opcion-hora">
+                {c.inicio}
+                <small>{c.fin}</small>
+              </span>
+              {(() => {
+                const img = imagenDe(c.banda);
+                return img ? (
+                  <img class:list={['opcion-foto', `es-${img.tipo}`]} src={`/${img.archivo}`} alt="" loading="lazy" decoding="async" />
+                ) : (
+                  <span class="opcion-foto sin-imagen" aria-hidden="true">{iniciales(c.banda)}</span>
+                );
+              })()}
+              <span class="opcion-cuerpo">
+                <span class="opcion-banda">{c.banda}</span>
+                <span class="opcion-meta">
+                  <span class="opcion-esc">{nombreEsc(c.escenario).corto}</span>
+                  {c.origen} · {formatoDuracion(duracion(c.inicio, c.fin))}
+                </span>
+                <span class="opcion-choque" data-choque></span>
+              </span>
+              <span class="opcion-check" aria-hidden="true"></span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+  <p class="lista-vacia" data-lista-vacia hidden>Nada con este filtro.</p>
+</section>
+
+<style>
+  .lista {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 16px;
+  }
+  .franja {
+    position: relative;
+  }
+  .franja[hidden] {
+    display: none;
+  }
+  .franja-hora {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: 0;
+    padding: 8px 12px 6px;
+    background: var(--verde-header);
+    color: var(--crema);
+    font: 400 1.1rem/1 var(--f-display);
+    letter-spacing: 0.1em;
+  }
+  ul {
+    position: relative;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+  }
+  ul::before {
+    /* riel vertical donde se enganchan los nodos */
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 0;
+    bottom: 0;
+    border-left: 3px dashed rgb(27 42 36 / 0.35);
+  }
+  li[hidden] {
+    display: none;
+  }
+  .opcion {
+    display: grid;
+    grid-template-columns: 28px 40px 44px 1fr 32px;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    margin: 4px 0;
+    padding: 8px 10px 8px 8px;
+    border: 0;
+    background: rgb(241 236 208 / 0.28);
+    color: var(--tinta);
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .opcion:focus-visible {
+    outline: 3px solid #ffd24a;
+    outline-offset: -3px;
+  }
+  .opcion-nodo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 3px solid var(--tinta);
+    border-radius: 50%;
+    background: var(--crema);
+    font: 700 0.85rem/1 var(--f-cond);
+  }
+  .opcion-hora {
+    display: grid;
+    font: 700 1rem/1 var(--f-cond);
+  }
+  .opcion-hora small {
+    margin-top: 3px;
+    font-size: 0.8rem;
+    opacity: 0.65;
+  }
+  .opcion-foto {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    background: var(--dia-oscuro);
+    filter: grayscale(1) contrast(1.1);
+    transition: filter 0.2s;
+  }
+  .opcion-foto.es-logo {
+    object-fit: contain;
+    padding: 3px;
+    background: var(--crema);
+  }
+  .opcion-foto.sin-imagen {
+    display: grid;
+    place-items: center;
+    color: rgb(241 236 208 / 0.6);
+    font: 400 0.9rem/1 var(--f-display);
+  }
+  .opcion[aria-pressed='true'] .opcion-foto {
+    filter: none;
+    outline: 2px solid var(--crema);
+  }
+  .opcion-cuerpo {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+  }
+  .opcion-banda {
+    font: 400 0.95rem/1.1 var(--f-display);
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+  .opcion-meta {
+    font: 600 0.82rem/1 var(--f-cond);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .opcion-esc {
+    display: inline-block;
+    margin-right: 4px;
+    padding: 2px 5px;
+    background: var(--tinta);
+    color: var(--crema);
+  }
+  .opcion-choque {
+    font: 700 0.8rem/1.1 var(--f-cond);
+    letter-spacing: 0.04em;
+    color: #9c140d;
+    text-transform: uppercase;
+  }
+  .opcion-choque:empty {
+    display: none;
+  }
+  .opcion-check {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid var(--tinta);
+    font: 700 1.3rem/1 var(--f-cond);
+  }
+  .opcion-check::before {
+    content: '+';
+  }
+
+  .opcion[aria-pressed='true'] {
+    background: var(--dia);
+    color: var(--crema);
+  }
+  .opcion[aria-pressed='true'] .opcion-nodo {
+    border-color: var(--crema);
+    background: var(--tinta);
+    color: var(--crema);
+  }
+  .opcion[aria-pressed='true'] .opcion-esc {
+    background: var(--crema);
+    color: var(--tinta);
+  }
+  .opcion[aria-pressed='true'] .opcion-check {
+    border-color: var(--crema);
+    background: var(--crema);
+    color: var(--dia);
+  }
+  .opcion[aria-pressed='true'] .opcion-check::before {
+    content: '✓';
+  }
+  .opcion[aria-pressed='true'] .opcion-choque {
+    color: #ffe08a;
+  }
+  .opcion.choca {
+    opacity: 0.55;
+    background: repeating-linear-gradient(-45deg, rgb(27 42 36 / 0.12) 0 6px, transparent 6px 12px);
+  }
+  .opcion.destello {
+    animation: destello-lista 0.9s ease 2;
+  }
+  @keyframes destello-lista {
+    50% {
+      box-shadow: inset 0 0 0 4px #ffd24a;
+    }
+  }
+  .lista-vacia {
+    padding: 20px;
+    background: rgb(241 236 208 / 0.3);
+    font: 600 1rem/1.3 var(--f-cond);
+    text-align: center;
+  }
+</style>

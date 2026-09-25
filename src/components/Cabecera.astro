@@ -1,0 +1,110 @@
+---
+import { DIAS } from '../data/programacion';
+import { AUTOR } from '../data/autor';
+---
+<header class="cabecera">
+  <div class="marca">
+    <p class="antetitulo">
+      Rock al Parque · 2026 <span aria-hidden="true">·</span>
+      <a href={AUTOR.instagram} target="_blank" rel="me noopener">por {AUTOR.arroba}</a>
+    </p>
+    <div class="bloque-titulo">
+      <h1>Ruta de conciertos</h1>
+    </div>
+    <p class="barra-dia">
+      <span class="barra-accion">Crea tu ruta</span>
+      {DIAS.map((d) => (
+        <span class="barra-fecha" data-dia-fecha={d.id}>
+          {d.nombre} {d.numero} <em>de octubre</em>
+        </span>
+      ))}
+    </p>
+  </div>
+
+  <img class="logo-rap" src="/marca/logo-rap-30.png" alt="Rock al Parque 30 años" width="434" height="334" />
+</header>
+
+<style>
+  .cabecera {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 0 20px;
+  }
+  .marca {
+    flex: 1;
+    min-width: 0;
+  }
+  .antetitulo {
+    margin: 0 0 8px;
+    font: 700 1rem/1 var(--f-cond);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crema);
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.35);
+  }
+  .antetitulo a {
+    color: inherit;
+    letter-spacing: 0.12em;
+    text-transform: none;
+    text-decoration: none;
+    border-bottom: 2px solid rgb(241 236 208 / 0.5);
+  }
+  .antetitulo a:hover {
+    border-color: var(--crema);
+  }
+  .bloque-titulo {
+    display: inline-block;
+    background: var(--verde-header);
+    padding: 14px 22px 10px;
+    max-width: 100%;
+  }
+  h1 {
+    margin: 0;
+    font: 400 clamp(1.6rem, 5.4vw, 3.4rem) / 1 var(--f-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--crema);
+  }
+  .barra-dia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 14px;
+    align-items: baseline;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 22px;
+    background: var(--dia);
+    font: 400 clamp(0.95rem, 2.4vw, 1.2rem) / 1.3 var(--f-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crema);
+    transition: background 0.3s;
+  }
+  .barra-accion {
+    color: var(--tinta);
+  }
+  .barra-fecha {
+    display: none;
+  }
+  .barra-fecha em {
+    font-style: normal;
+    color: #ffd24a;
+  }
+  :global(body[data-dia='sab']) .barra-fecha[data-dia-fecha='sab'],
+  :global(body[data-dia='dom']) .barra-fecha[data-dia-fecha='dom'],
+  :global(body[data-dia='lun']) .barra-fecha[data-dia-fecha='lun'] {
+    display: inline;
+  }
+  .logo-rap {
+    flex: none;
+    width: clamp(92px, 13vw, 190px);
+    height: auto;
+    transform: rotate(-4deg);
+    filter: drop-shadow(3px 4px 0 rgb(27 42 36 / 0.35));
+  }
+</style>

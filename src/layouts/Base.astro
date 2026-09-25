@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import { AUTOR } from '../data/autor';
+import Analitica from '../components/Analitica.astro';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+}
+const { titulo, descripcion } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descripcion} />
+    <meta name="author" content={AUTOR.arroba} />
+    <link rel="me" href={AUTOR.instagram} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    {Astro.site && <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />}
+    {Astro.site && <meta property="og:image" content={new URL('/og.jpg', Astro.site).href} />}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ruta de conciertos Rock al Parque 2026, por @efren.fotograma" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1f3d33" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&display=swap"
+    />
+    <title>{titulo}</title>
+    <Analitica />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,69 @@
+---
+import { DIAS } from '../data/programacion';
+---
+<nav class="selector" role="tablist" aria-label="Día del festival">
+  {DIAS.map((d) => (
+    <button
+      class="pestana"
+      role="tab"
+      id={`tab-${d.id}`}
+      aria-controls={`parrilla-${d.id}`}
+      aria-selected="false"
+      data-tab={d.id}
+      style={`--c:${d.color}`}
+    >
+      <span class="pestana-dia">{d.nombre.slice(0, 3)}</span>
+      <span class="pestana-num">{d.numero}</span>
+      <span class="pestana-cuenta" data-cuenta={d.id} aria-label="conciertos elegidos">0</span>
+    </button>
+  ))}
+</nav>
+
+<style>
+  .selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .pestana {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 8px 8px;
+    border: 0;
+    border-bottom: 5px solid var(--c);
+    background: rgb(27 42 36 / 0.82);
+    color: var(--crema);
+    cursor: pointer;
+    font-family: var(--f-display);
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pestana:hover {
+    transform: translateY(-2px);
+  }
+  .pestana[aria-selected='true'] {
+    background: var(--c);
+  }
+  .pestana-dia {
+    font-size: clamp(0.95rem, 2.6vw, 1.25rem);
+    letter-spacing: 0.08em;
+  }
+  .pestana-num {
+    font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  }
+  .pestana-cuenta {
+    min-width: 1.7em;
+    padding: 1px 6px;
+    background: var(--crema);
+    color: var(--tinta);
+    font: 700 0.95rem/1.3 var(--f-cond);
+    text-align: center;
+  }
+  .pestana-cuenta:empty,
+  .pestana-cuenta[data-vacia] {
+    opacity: 0.35;
+  }
+</style>

@@ -1,0 +1,749 @@
+{
+  "solegnium": {
+    "banda": "Solegnium",
+    "archivo": "bandas/solegnium.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/13014407",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 13014407: Solegnium · 67 fans"
+  },
+  "narcocracia": {
+    "banda": "Narcocracia",
+    "archivo": "bandas/narcocracia.jpg",
+    "tipo": "foto",
+    "credito": "",
+    "fuente": "Bandcamp",
+    "pagina": "https://narcocracia.bandcamp.com/",
+    "nota": "url fijada"
+  },
+  "vein": {
+    "banda": "Vein",
+    "archivo": "bandas/vein.jpg",
+    "tipo": "foto",
+    "credito": "Arte de «Revelai» (recorte)",
+    "fuente": "Radio UNAL",
+    "pagina": "https://radio.unal.edu.co/detalle/estreno-vein-1er-anuncio-festival-rock-al-parque-2026",
+    "nota": "manual"
+  },
+  "hellbutcher": {
+    "banda": "Hellbutcher",
+    "archivo": "bandas/hellbutcher.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/255543632",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 255543632: Hellbutcher · 308 fans"
+  },
+  "burning-witches": {
+    "banda": "Burning Witches",
+    "archivo": "bandas/burning-witches.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Burning_Witches_Rockharz_2019_25.jpg",
+    "credito": "S. Bollmann · Attribution",
+    "nota": "Q59490005: banda de rock femenino / Swiss all-female heavy metal band"
+  },
+  "stratovarius": {
+    "banda": "Stratovarius",
+    "archivo": "bandas/stratovarius.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Stratovarius_-_Wacken_Open_Air_2022_04.jpg",
+    "credito": "Frank Schwichtenberg · CC BY-SA 4.0",
+    "nota": "Q201207: Banda finlandesa de power metal melódico / Finnish power metal band"
+  },
+  "perpetual-warfare": {
+    "banda": "Perpetual Warfare",
+    "archivo": "bandas/perpetual-warfare.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/11632275",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 11632275: Perpetual Warfare · 656 fans"
+  },
+  "apocalyptica": {
+    "banda": "Apocalyptica",
+    "archivo": "bandas/apocalyptica.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Hellfest2017Apocalyptica_01.jpg",
+    "credito": "Selbymay · CC BY-SA 4.0",
+    "nota": "Q484421: banda de metal sinfónico / Finnish symphonic metal band"
+  },
+  "maskhera": {
+    "banda": "Maskhera",
+    "archivo": "bandas/maskhera.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/7027297",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 7027297: Maskhera · 291 fans"
+  },
+  "ataque-de-panico": {
+    "banda": "Ataque de Pánico",
+    "archivo": "bandas/ataque-de-panico.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/12618285",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 12618285: ATAQUE DE PÁNICO · 46 fans"
+  },
+  "syracusae": {
+    "banda": "Syracusæ",
+    "archivo": "bandas/syracusae.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/13329359",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 13329359: SYRACUSÆ · 196 fans"
+  },
+  "between-the-buried-and-me": {
+    "banda": "Between the Buried and Me",
+    "archivo": "bandas/between-the-buried-and-me.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Between_the_Buried_and_Me.jpg",
+    "credito": "Stéphane Gallay · CC BY 4.0",
+    "nota": "Q850616: banda estadounidense de metal progresivo / American progressive metalcore band"
+  },
+  "valore": {
+    "banda": "Valore",
+    "archivo": "bandas/valore.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/12533230",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 12533230: Valore · 5 fans"
+  },
+  "grave": {
+    "banda": "Grave",
+    "archivo": "bandas/grave.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Grave,_Klubben,_Stockholm_2008.jpg",
+    "credito": "BiblioteKarin · Public domain",
+    "nota": "Q1028007: Swedish death metal band"
+  },
+  "triptykon": {
+    "banda": "Triptykon",
+    "archivo": "bandas/triptykon.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Triptykon_-_Wacken_Open_Air_2016-AL3480.jpg",
+    "credito": "Andreas Lawen, Fotandi · CC BY-SA 3.0",
+    "nota": "Q952013: grupo musical / Swiss extreme metal band"
+  },
+  "no-dependiente": {
+    "banda": "No Dependiente",
+    "archivo": "bandas/no-dependiente.jpg",
+    "tipo": "foto",
+    "credito": "",
+    "fuente": "Cartel Rock",
+    "pagina": "https://cartelrock.com/artista/no-dependiente",
+    "nota": "url fijada"
+  },
+  "end-it": {
+    "banda": "End It",
+    "archivo": "bandas/end-it.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/13023725",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 13023725: End It · 1866 fans"
+  },
+  "agua-bendita": {
+    "banda": "Agua Bendita",
+    "archivo": "bandas/agua-bendita.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Agua_Bendita.jpg",
+    "credito": "AlbertRA · CC BY-SA 4.0",
+    "nota": "Q5660219: Catalan musical group"
+  },
+  "nadie": {
+    "banda": "Nadie",
+    "archivo": "bandas/nadie.jpg",
+    "tipo": "foto",
+    "credito": "",
+    "fuente": "Rockombia",
+    "pagina": "https://rockombia.com/noticias/nadie-30-anos-de-historia-punk-y-rocanrol-con-conciertos-en-bogota-y-medellin.html",
+    "nota": "url fijada"
+  },
+  "i-r-a": {
+    "banda": "I.R.A.",
+    "archivo": "bandas/i-r-a.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:IRAbandacolombiana.jpg",
+    "credito": "Davidnikolalde · CC0",
+    "nota": "commons fijado: IRAbandacolombiana.jpg"
+  },
+  "darkest-hour": {
+    "banda": "Darkest Hour",
+    "archivo": "bandas/darkest-hour.png",
+    "tipo": "logo",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Darkest_Hour_-_Logo_(2014).svg",
+    "credito": "Sumerian Records/Darkest Hour · Public domain",
+    "nota": "Q1166257: grupo musical estadounidense / American metal band"
+  },
+  "darkness": {
+    "banda": "Darkness",
+    "archivo": "bandas/darkness.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Darkness_en_Xua_Rock_Fest_2016.jpg",
+    "credito": "Darkness Colombia · CC BY-SA 4.0",
+    "nota": "commons fijado: Darkness_en_Xua_Rock_Fest_2016.jpg"
+  },
+  "el-em3": {
+    "banda": "El Em3",
+    "archivo": "bandas/el-em3.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/202974837",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 202974837: El Em3 · 1 fans"
+  },
+  "real-house-of-hate": {
+    "banda": "Real House of Hate",
+    "archivo": "bandas/real-house-of-hate.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/13259533",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 13259533: Real House of Hate · 83 fans"
+  },
+  "kraken": {
+    "banda": "Kraken",
+    "archivo": "bandas/kraken.png",
+    "tipo": "logo",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Logo_krakenvvv.png",
+    "credito": "Jrar 182 · CC BY-SA 4.0",
+    "nota": "Q6435931: Banda / Colombian musical group"
+  },
+  "info": {
+    "banda": "Info",
+    "archivo": "bandas/info.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:INFO_en_Wacken_Open_Air_2024.jpg",
+    "credito": "HolyRom · CC0",
+    "nota": "commons fijado: INFO_en_Wacken_Open_Air_2024.jpg"
+  },
+  "pornomotora": {
+    "banda": "Pornomotora",
+    "archivo": "bandas/pornomotora.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/520495",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 520495: Pornomotora · 3333 fans"
+  },
+  "los-setas": {
+    "banda": "Los Setas",
+    "archivo": "bandas/los-setas.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/7011551",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 7011551: Los Setas · 100 fans"
+  },
+  "nina-lobo": {
+    "banda": "Niña Lobo",
+    "archivo": "bandas/nina-lobo.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/66606202",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 66606202: Niña Lobo · 197 fans"
+  },
+  "alto-grado": {
+    "banda": "Alto Grado",
+    "archivo": "bandas/alto-grado.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/7743852",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 7743852: Alto Grado · 147 fans"
+  },
+  "claudio-narea-los-prisioneros": {
+    "banda": "Claudio Narea Los Prisioneros",
+    "archivo": "bandas/claudio-narea-los-prisioneros.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/4825164",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 4825164: Claudio Narea · 2123 fans"
+  },
+  "iseo-dodosound": {
+    "banda": "Iseo & Dodosound",
+    "archivo": "bandas/iseo-dodosound.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Iseo_%26_Dodosound.jpg",
+    "credito": "David Gotxicoa · CC BY-SA 4.0",
+    "nota": "Q54855961: banda española / Spanish musical group"
+  },
+  "seru-giran": {
+    "banda": "Serú Girán",
+    "archivo": "bandas/seru-giran.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Seru_Giran_1978.jpg",
+    "credito": "Unknown authorUnknown author · Public domain",
+    "nota": "Q2994217: grupo de rock argentino / Argentinean musical supergroup"
+  },
+  "esteman": {
+    "banda": "Esteman",
+    "archivo": "bandas/esteman.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Esteman_-_MX2019_(cropped).jpg",
+    "credito": "Itzel Romero / Secretaría de Cultura de la Ciudad de México · CC BY 2.0",
+    "nota": "Q29479109: cantante y músico colombiano / Colombian singer"
+  },
+  "mon-laferte": {
+    "banda": "Mon Laferte",
+    "archivo": "bandas/mon-laferte.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:MX_TV_GESTOS_MON_LAFERTE_(49651087132)_(cropped).jpg",
+    "credito": "Secretaría de Cultura Ciudad de México from México · CC BY 2.0",
+    "nota": "Q2836528: cantuatora chilenomexicana / Chilean Mexican singer-songwriter"
+  },
+  "la-brigada-rpf": {
+    "banda": "La Brigada RPF",
+    "archivo": "bandas/la-brigada-rpf.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/74976232",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 74976232: La Brigada R.P.F. · 18 fans"
+  },
+  "el-punto-ska": {
+    "banda": "El Punto Ska",
+    "archivo": "bandas/el-punto-ska.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/64323002",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 64323002: El Punto Ska · 49 fans"
+  },
+  "desorden-publico": {
+    "banda": "Desorden Público",
+    "archivo": "bandas/desorden-publico.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:D.P.jpg",
+    "credito": "Ciroduran · CC BY 2.0",
+    "nota": "Q502500: grupo musical venezolano de ska / Venezuela musical group"
+  },
+  "tokyo-ska-paradise-orchestra": {
+    "banda": "Tokyo Ska Paradise Orchestra",
+    "archivo": "bandas/tokyo-ska-paradise-orchestra.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tokyo_Ska_Paradise_Orchestra_mg_6175.jpg",
+    "credito": "Rama · CC BY-SA 2.0 fr",
+    "nota": "Q610696: grupo musical / Japanese ska band"
+  },
+  "green-valley": {
+    "banda": "Green Valley",
+    "archivo": "bandas/green-valley.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Green_Valley_en_2016.jpg",
+    "credito": "Ruben Ortega · CC BY-SA 4.0",
+    "nota": "Q17120978: banda española de reggae y dancehall / musical group from Spain"
+  },
+  "skampida": {
+    "banda": "Skampida",
+    "archivo": "bandas/skampida.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/507634",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 507634: Skampida · 7682 fans"
+  },
+  "gondwana-quique-neira": {
+    "banda": "Gondwana & Quique Neira",
+    "archivo": "bandas/gondwana-quique-neira.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pichilemu_Surfestival_20200125_13.jpg",
+    "credito": "Carlos Figueroa · CC BY-SA 4.0",
+    "nota": "Q675448: grupo musical de reggae chileno / Chilean band"
+  },
+  "brina-quoya": {
+    "banda": "Brina Quoya",
+    "archivo": "bandas/brina-quoya.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/12944665",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 12944665: Brina Quoya · 53 fans"
+  },
+  "elsa-riveros": {
+    "banda": "Elsa Riveros",
+    "archivo": "bandas/elsa-riveros.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/7995886",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 7995886: Elsa Riveros · 112 fans"
+  },
+  "lo-mismo-decian-de-juana": {
+    "banda": "Lo Mismo Decían de Juana",
+    "archivo": "bandas/lo-mismo-decian-de-juana.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/11724885",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 11724885: Lo Mismo Decían de Juana · 134 fans"
+  },
+  "los-tetas": {
+    "banda": "Los Tetas",
+    "archivo": "bandas/los-tetas.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Los_Tetas.jpg",
+    "credito": "Originaltm · CC BY-SA 3.0",
+    "nota": "Q8273049: banda chilena / Chilean band"
+  },
+  "la-monky-band": {
+    "banda": "La Monky Band",
+    "archivo": "bandas/la-monky-band.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/12631081",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 12631081: La Monky Band · 52 fans"
+  },
+  "porter": {
+    "banda": "Porter",
+    "archivo": "bandas/porter.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/84062252",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 84062252: Porter · 46014 fans"
+  },
+  "bandalos-chinos": {
+    "banda": "Bandalos Chinos",
+    "archivo": "bandas/bandalos-chinos.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bandalos_Chinos_en_Santiago_del_Estero.jpg",
+    "credito": "Ministerio de Cultura de la Nación · CC BY-SA 2.0",
+    "nota": "Q31281086: banda argentina / Argentinian musical group; indie pop band"
+  },
+  "ultimos-nietos": {
+    "banda": "Últimos Nietos",
+    "archivo": "bandas/ultimos-nietos.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/135307012",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 135307012: Últimos Nietos · 88 fans"
+  },
+  "nawal": {
+    "banda": "Nawal",
+    "archivo": "bandas/nawal.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/6222974",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 6222974: Nawal · 1336 fans"
+  },
+  "wanukta-tonic": {
+    "banda": "Wañukta Tonic",
+    "archivo": "bandas/wanukta-tonic.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/15127377",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 15127377: Wañukta Tonic · 79 fans"
+  },
+  "margarita-siempre-viva": {
+    "banda": "Margarita Siempre Viva",
+    "archivo": "bandas/margarita-siempre-viva.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/13473279",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 13473279: Margarita Siempre Viva · 4068 fans"
+  },
+  "medved": {
+    "banda": "Medved",
+    "archivo": "bandas/medved.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/262286851",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 262286851: medved · 29 fans"
+  },
+  "doris-vespa": {
+    "banda": "Doris Vespa",
+    "archivo": "bandas/doris-vespa.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/9474028",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 9474028: Doris Vespa · 347 fans"
+  },
+  "nicolai-fella": {
+    "banda": "Nicolai Fella",
+    "archivo": "bandas/nicolai-fella.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/9843242",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 9843242: Nicolai Fella · 2163 fans"
+  },
+  "pez-errante": {
+    "banda": "Pez Errante",
+    "archivo": "bandas/pez-errante.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/84954062",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 84954062: Pez Errante · 33 fans"
+  },
+  "lutter": {
+    "banda": "Lutter",
+    "archivo": "bandas/lutter.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/14832513",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 14832513: LutterBand · 50 fans"
+  },
+  "division-minuscula": {
+    "banda": "División Minúscula",
+    "archivo": "bandas/division-minuscula.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Concierto_de_la_Semana_de_las_Juventudes_(S%C3%A1bado)_(37681030344).jpg",
+    "credito": "Secretaría de Cultura Ciudad de México from México · CC BY-SA 2.0",
+    "nota": "Q5284633: Banda de Rock Mexicana / Mexican musical group"
+  },
+  "ratones-paranoicos": {
+    "banda": "Ratones Paranoicos",
+    "archivo": "bandas/ratones-paranoicos.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ratones_Paranoicos.jpg",
+    "credito": "Maria Gagnon · CC BY 2.0",
+    "nota": "Q6317584: grupo musical de Argentina / Argentine musical group; rock band"
+  },
+  "boca-de-serpiente": {
+    "banda": "Boca de Serpiente",
+    "archivo": "bandas/boca-de-serpiente.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/65695952",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 65695952: boca de serpiente · 64 fans"
+  },
+  "ministry": {
+    "banda": "Ministry",
+    "archivo": "bandas/ministry.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ministry_-_Wacken_Open_Air_2016-AL2884.jpg",
+    "credito": "Andreas Lawen, Fotandi · CC BY-SA 3.0",
+    "nota": "Q425772: banda estadounidense de metal industrial / American industrial metal band"
+  },
+  "rata-blanca": {
+    "banda": "Rata Blanca",
+    "archivo": "bandas/rata-blanca.png",
+    "tipo": "logo",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rata_Balnca_logo_fondo_blanco.png",
+    "credito": "Adriel ricardo morales · CC BY-SA 4.0",
+    "nota": "Q926526: grupo musical de Argentina / Argentine rock band"
+  },
+  "las-fokin-biches": {
+    "banda": "Las Fokin Biches",
+    "archivo": "bandas/las-fokin-biches.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/7631758",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 7631758: Las Fokin Biches · 488 fans"
+  },
+  "sistema-de-entretenimiento": {
+    "banda": "Sistema de Entretenimiento",
+    "archivo": "bandas/sistema-de-entretenimiento.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/113393942",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 113393942: sistema de entretenimiento · 678 fans"
+  },
+  "trotsky-vengaran": {
+    "banda": "Trotsky Vengarán",
+    "archivo": "bandas/trotsky-vengaran.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Trotsky_Vengar%C3%A1n_-_Carnaval_Fest.jpg",
+    "credito": "Michael Selada · CC BY-SA 4.0",
+    "nota": "Q7846347: banda de punk rock uruguaya / Uruguayan rock band"
+  },
+  "v-for-volume": {
+    "banda": "V for Volume",
+    "archivo": "bandas/v-for-volume.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/5623411",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 5623411: V for Volume · 6967 fans"
+  },
+  "stayway": {
+    "banda": "Stayway",
+    "archivo": "bandas/stayway.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/14875149",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 14875149: Stayway · 33 fans"
+  },
+  "editors": {
+    "banda": "Editors",
+    "archivo": "bandas/editors.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Deichbrand2018-Editors-66.JPG",
+    "credito": "Chris W. Braunschweiger (talk) · CC BY-SA 4.0",
+    "nota": "Q570393: banda / English musical group; rock band"
+  },
+  "los-bunkers": {
+    "banda": "Los Bunkers",
+    "archivo": "bandas/los-bunkers.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Los_Bunkers.jpg",
+    "credito": "Yo · CC BY-SA 3.0",
+    "nota": "Q2737642: grupo musical de Chile / Chilean alternative rock band"
+  },
+  "casi": {
+    "banda": "Casi",
+    "archivo": "bandas/casi.jpg",
+    "tipo": "foto",
+    "credito": "Portada de «Si el Tiburón Se Come el Cable»",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/album/931092251",
+    "nota": "url fijada"
+  },
+  "algiers": {
+    "banda": "Algiers",
+    "archivo": "bandas/algiers.jpg",
+    "tipo": "foto",
+    "fuente": "Wikimedia Commons",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Algiers_Live_London_2015.jpg",
+    "credito": "Tom Medwell · CC BY-SA 3.0",
+    "nota": "Q20012828: banda / American rock band"
+  },
+  "lika-nova": {
+    "banda": "Lika Nova",
+    "archivo": "bandas/lika-nova.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/9917810",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 9917810: Lika Nova · 799 fans"
+  },
+  "alcala-norte": {
+    "banda": "Alcalá Norte",
+    "archivo": "bandas/alcala-norte.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/205843827",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 205843827: Alcalá Norte · 972 fans"
+  },
+  "laura-perez": {
+    "banda": "Laura Pérez",
+    "archivo": "bandas/laura-perez.jpg",
+    "tipo": "foto",
+    "credito": "Portada de «La Chinita»",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/album/686273081",
+    "nota": "url fijada"
+  },
+  "lucio-feuillet": {
+    "banda": "Lucio Feuillet",
+    "archivo": "bandas/lucio-feuillet.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/5509840",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 5509840: Lucio Feuillet · 1054 fans"
+  },
+  "the-klaxon": {
+    "banda": "The Klaxon",
+    "archivo": "bandas/the-klaxon.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/64252442",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 64252442: The Klaxon · 151 fans"
+  },
+  "la-severa-matacera": {
+    "banda": "La Severa Matacera",
+    "archivo": "bandas/la-severa-matacera.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/4247782",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 4247782: La Severa Matacera · 3081 fans"
+  },
+  "tizishi": {
+    "banda": "Tizishi",
+    "archivo": "bandas/tizishi.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/246914712",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 246914712: Tizishi · 705 fans"
+  },
+  "zalama-crew": {
+    "banda": "Zalama Crew",
+    "archivo": "bandas/zalama-crew.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/5001404",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 5001404: Zalama Crew · 2161 fans"
+  },
+  "los-elefantes": {
+    "banda": "Los Elefantes",
+    "archivo": "bandas/los-elefantes.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/5934635",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 5934635: Los Elefantes · 6448 fans"
+  },
+  "ghetto-kumbe": {
+    "banda": "Ghetto Kumbé",
+    "archivo": "bandas/ghetto-kumbe.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/9029164",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 9029164: Ghetto Kumbé · 3037 fans"
+  },
+  "kill-the-clowns": {
+    "banda": "Kill the Clowns",
+    "archivo": "bandas/kill-the-clowns.jpg",
+    "tipo": "foto",
+    "fuente": "Deezer",
+    "pagina": "https://www.deezer.com/artist/10483075",
+    "credito": "Foto de artista vía Deezer",
+    "nota": "deezer 10483075: Kill the Clowns · 516 fans"
+  }
+}

@@ -1,0 +1,332 @@
+---
+import MapaParque from './MapaParque.astro';
+---
+<aside class="panel" data-panel aria-labelledby="panel-titulo">
+  <button class="panel-asa" type="button" data-asa aria-expanded="false" aria-controls="panel-contenido">
+    <span>Mi ruta</span>
+    <span class="asa-resumen" data-asa-resumen>0 conciertos</span>
+    <span class="asa-flecha" aria-hidden="true">▲</span>
+  </button>
+
+  <div class="panel-contenido" id="panel-contenido">
+    <header class="panel-cabeza">
+      <h2 id="panel-titulo">Mi ruta</h2>
+      <p class="panel-dia" data-panel-dia></p>
+    </header>
+
+    <dl class="stats">
+      <div><dt>Conciertos</dt><dd data-stat="conciertos">0</dd></div>
+      <div><dt>Música</dt><dd data-stat="musica">0 min</dd></div>
+      <div><dt>Choques</dt><dd data-stat="choques">0</dd></div>
+    </dl>
+
+    <MapaParque />
+
+    <ol class="cadena" data-cadena></ol>
+    <p class="vacio" data-vacio>
+      Toca los conciertos en la parrilla para agregarlos. Se conectan en orden y te avisamos si se cruzan
+      o si no alcanzas a caminar al siguiente escenario.
+    </p>
+
+    <div class="acciones">
+      <button type="button" class="btn btn-primario" data-accion="imagen">Exportar imagen</button>
+      <button type="button" class="btn" data-accion="calendario">Calendario .ics</button>
+      <button type="button" class="btn" data-accion="enlace">Copiar enlace</button>
+      <button type="button" class="btn btn-sutil" data-accion="limpiar">Limpiar día</button>
+    </div>
+    <p class="nota">Los 3 días se guardan en este navegador. El calendario incluye toda tu ruta.</p>
+  </div>
+</aside>
+
+<style>
+  .panel {
+    position: sticky;
+    top: 16px;
+    z-index: 6;
+    align-self: start;
+    max-height: calc(100dvh - 32px);
+    display: flex;
+    flex-direction: column;
+    background: var(--verde-header);
+    color: var(--crema);
+    box-shadow: 6px 6px 0 rgb(27 42 36 / 0.45);
+  }
+  .panel-asa {
+    display: none;
+  }
+  .panel-contenido {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+  }
+  .panel-cabeza {
+    padding: 18px 20px 0;
+  }
+  h2 {
+    margin: 0;
+    font: 400 2rem/1 var(--f-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .panel-dia {
+    display: inline-block;
+    margin: 8px 0 0;
+    padding: 3px 10px;
+    background: var(--dia);
+    font: 700 0.95rem/1.2 var(--f-cond);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.3s;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin: 16px 20px;
+  }
+  .stats div {
+    padding: 8px 6px;
+    background: rgb(0 0 0 / 0.22);
+    text-align: center;
+  }
+  dt {
+    font: 600 0.7rem/1 var(--f-cond);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  dd {
+    margin: 4px 0 0;
+    font: 400 1.25rem/1 var(--f-display);
+    white-space: nowrap;
+  }
+  dd[data-alerta] {
+    color: #ff7a6e;
+  }
+
+  /* Cadena de nodos (la genera app.ts) */
+  .cadena {
+    position: relative;
+    margin: 0;
+    padding: 0 20px 0 22px;
+    list-style: none;
+  }
+  .cadena :global(.eslabon) {
+    position: relative;
+    display: grid;
+    grid-template-columns: 24px 40px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 0;
+  }
+  .cadena :global(.eslabon::before) {
+    /* línea vertical entre nodos */
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    border-left: 3px dashed rgb(241 236 208 / 0.45);
+    z-index: 0;
+  }
+  .cadena :global(.eslabon:first-child::before) {
+    top: 50%;
+  }
+  .cadena :global(.eslabon:last-child::before) {
+    bottom: 50%;
+  }
+  .cadena :global(.eslabon-num) {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--crema);
+    color: var(--tinta);
+    font: 700 0.85rem/1 var(--f-cond);
+  }
+  .cadena :global(.eslabon.en-choque .eslabon-num) {
+    background: var(--rojo);
+    color: var(--crema);
+  }
+  .cadena :global(.eslabon-foto) {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    background: var(--dia-oscuro);
+  }
+  .cadena :global(.eslabon-foto.es-logo) {
+    object-fit: contain;
+    padding: 2px;
+    background: var(--crema);
+  }
+  .cadena :global(.eslabon-foto.sin-imagen) {
+    display: grid;
+    place-items: center;
+    color: rgb(241 236 208 / 0.6);
+    font: 400 0.85rem/1 var(--f-display);
+  }
+  .cadena :global(.eslabon-ir) {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cadena :global(.eslabon-banda) {
+    padding: 3px 7px 2px;
+    background: var(--dia);
+    font: 400 0.95rem/1.1 var(--f-display);
+    text-transform: uppercase;
+  }
+  .cadena :global(.eslabon-meta) {
+    font: 600 0.8rem/1 var(--f-cond);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .cadena :global(.eslabon-quitar) {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    background: rgb(0 0 0 / 0.25);
+    color: var(--crema);
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .cadena :global(.eslabon-quitar:hover) {
+    background: var(--rojo);
+  }
+  .cadena :global(.salto) {
+    position: relative;
+    padding: 2px 0 2px 84px;
+    font: 700 0.75rem/1.3 var(--f-cond);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(241 236 208 / 0.7);
+  }
+  .cadena :global(.salto::before) {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    border-left: 3px dashed rgb(241 236 208 / 0.45);
+  }
+  .cadena :global(.salto.justo) {
+    color: #ffb15c;
+  }
+  .cadena :global(.salto.choque) {
+    color: #ff7a6e;
+  }
+
+  .vacio {
+    margin: 0 20px;
+    padding: 14px;
+    border: 2px dashed rgb(241 236 208 / 0.35);
+    font: 500 1rem/1.35 var(--f-cond);
+  }
+  .vacio[hidden] {
+    display: none;
+  }
+
+  .acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 18px 20px 0;
+  }
+  .btn {
+    padding: 10px 8px;
+    border: 2px solid var(--crema);
+    background: transparent;
+    color: var(--crema);
+    font: 700 0.95rem/1 var(--f-cond);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn:hover {
+    background: var(--crema);
+    color: var(--tinta);
+  }
+  .btn-primario {
+    grid-column: 1 / -1;
+    padding: 14px 8px;
+    border-color: var(--naranja);
+    background: var(--naranja);
+    color: var(--tinta);
+    font-size: 1.1rem;
+  }
+  .btn-sutil {
+    border-color: rgb(241 236 208 / 0.35);
+  }
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .nota {
+    margin: 12px 20px 18px;
+    font: 500 0.85rem/1.3 var(--f-cond);
+    opacity: 0.7;
+  }
+
+  /* ── Celular: hoja inferior desplegable ── */
+  @media (max-width: 960px) {
+    .panel {
+      position: fixed;
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: 78dvh;
+      box-shadow: 0 -6px 0 rgb(27 42 36 / 0.35);
+    }
+    .panel-asa {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 16px;
+      border: 0;
+      border-top: 5px solid var(--dia);
+      background: var(--verde-header);
+      color: var(--crema);
+      font: 400 1.15rem/1 var(--f-display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .asa-resumen {
+      flex: 1;
+      font: 600 0.95rem/1 var(--f-cond);
+      letter-spacing: 0.1em;
+      text-align: right;
+      opacity: 0.8;
+    }
+    .asa-flecha {
+      transition: rotate 0.2s;
+    }
+    .panel-contenido {
+      display: none;
+    }
+    .panel.abierto .panel-contenido {
+      display: flex;
+    }
+    .panel.abierto .asa-flecha {
+      rotate: 180deg;
+    }
+    .panel-cabeza h2 {
+      display: none;
+    }
+  }
+</style>

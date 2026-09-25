@@ -1,0 +1,29 @@
+{
+  "name": "ruta-rock-al-parque",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "imagenes": "node scripts/imagenes.mjs",
+    "capturas": "node scripts/capturas-promo.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "playwright-core": "^1.63.0",
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "pnpm@11.1.1",
+  "license": "MIT",
+  "author": "Alvaro Efren Bolaños Scalante (@efren.fotograma) (https://www.instagram.com/efren.fotograma/)",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TakaraDasein/Tu-ruta-al-Rock-al-Parque.git"
+  }
+}

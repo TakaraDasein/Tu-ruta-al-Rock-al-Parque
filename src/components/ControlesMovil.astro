@@ -1,0 +1,59 @@
+---
+import { ESCENARIOS } from '../data/programacion';
+---
+<div class="controles" data-controles>
+  <div class="vista" role="group" aria-label="Tipo de vista">
+    <button type="button" data-vista="lista" aria-pressed="true">Lista</button>
+    <button type="button" data-vista="parrilla" aria-pressed="false">Parrilla</button>
+  </div>
+  <div class="filtros" role="group" aria-label="Filtrar por escenario" data-filtros>
+    <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+    {ESCENARIOS.map((e) => (
+      <button type="button" data-filtro={e.id} aria-pressed="false">{e.corto}</button>
+    ))}
+    <button type="button" data-filtro="ruta" aria-pressed="false">Mi ruta</button>
+  </div>
+</div>
+
+<style>
+  .controles {
+    display: none;
+  }
+  @media (max-width: 720px) {
+    .controles {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+  }
+  .vista,
+  .filtros {
+    display: flex;
+    gap: 4px;
+  }
+  .filtros {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  button {
+    flex: 1 1 auto;
+    min-height: 40px;
+    padding: 6px 7px;
+    border: 2px solid var(--tinta);
+    background: rgb(241 236 208 / 0.4);
+    color: var(--tinta);
+    font: 700 0.95rem/1 var(--f-cond);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  button[aria-pressed='true'] {
+    background: var(--tinta);
+    color: var(--crema);
+  }
+  [data-filtro='ruta'][aria-pressed='true'] {
+    background: var(--dia);
+    border-color: var(--dia);
+  }
+</style>

@@ -1,0 +1,43 @@
+:root {
+  --tinta: #1b2a24;
+  --crema: #f1ecd0;
+  --verde-header: #1f3d33;
+  --naranja: #f08a24;
+  --rojo: #e3261c;
+  --dia: #e3261c;
+  --dia-oscuro: #7a1410;
+  --f-display: 'Alfa Slab One', Georgia, serif;
+  --f-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #6db2aa 0%, #7eab98 22%, #a39a64 58%, #cf8a38 100%) #8fa585;
+  color: var(--tinta);
+  font-family: var(--f-cond);
+}
+
+button {
+  font: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

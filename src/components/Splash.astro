@@ -1,0 +1,376 @@
+---
+// Pantalla de entrada: arte oficial 30 años (el copetón de Tavo Garavato) + logo del festival.
+// Se muestra una vez por sesión; se puede volver a abrir desde el pie de página.
+import { AUTOR } from '../data/autor';
+---
+<div class="splash" data-splash role="dialog" aria-modal="true" aria-labelledby="splash-titulo">
+  <div class="grano" aria-hidden="true"></div>
+
+  <!-- Tres copetones: pasado, presente y futuro -->
+  <div class="bandada" aria-hidden="true">
+    {[0, 1, 2].map((i) => (
+      <svg class={`ave ave-${i}`} viewBox="0 0 64 40">
+        <path
+          class="ave-cuerpo"
+          d="M6 27c6-7 16-10 27-8l5-7 2 4 2-6 2 5 3-4v6c4 1 7 3 10 5l-6 2c-2 4-8 8-18 8-8 0-15-2-21 0L2 36l6-5z"
+        />
+        <path class="ave-ala" d="M20 23c6-11 15-15 21-13-3 7-10 13-21 15z" />
+        <circle cx="47" cy="19.5" r="1.2" class="ave-ojo" />
+      </svg>
+    ))}
+  </div>
+
+  <div class="splash-rejilla">
+    <figure class="arte">
+      <img src="/marca/copeton-2026.jpg" alt="Ilustración oficial de Rock al Parque 30 años: el copetón" />
+      <figcaption>Imagen oficial 30 años · Tavo Garavato / Idartes</figcaption>
+    </figure>
+
+    <div class="texto">
+      <img class="logo" src="/marca/logo-rap-30.png" alt="Rock al Parque 30 años" width="434" height="334" />
+      <h2 id="splash-titulo">
+        <span>Ruta de</span>
+        <span>conciertos</span>
+      </h2>
+      <p class="fechas">10 · 11 · 12 de octubre <em>Parque Simón Bolívar</em></p>
+      <p class="bajada">Elige tus bandas, conéctalas como nodos y llévate tu recorrido.</p>
+      <button type="button" class="entrar" data-entrar>
+        Crear mi ruta <span aria-hidden="true">→</span>
+      </button>
+      <a class="firma" href={AUTOR.instagram} target="_blank" rel="me noopener">
+        Una herramienta de <strong>{AUTOR.arroba}</strong>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Síncrono: evita que el splash parpadee a quien ya lo vio en esta sesión.
+  try {
+    if (sessionStorage.getItem('ruta-rap-2026-intro-vista') === '1')
+      document.querySelector('[data-splash]').hidden = true;
+  } catch {}
+</script>
+
+<style>
+  .splash {
+    --tinta-splash: #0f1a16;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 30% 45%, rgb(240 138 36 / 0.22), transparent 70%),
+      radial-gradient(ellipse 50% 50% at 85% 90%, rgb(227 38 28 / 0.18), transparent 70%),
+      var(--tinta-splash);
+    color: var(--crema);
+    transition: opacity 0.7s ease, visibility 0.7s;
+  }
+  .splash[hidden] {
+    display: none;
+  }
+  .splash.saliendo {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .splash.saliendo .splash-rejilla {
+    transform: scale(1.03);
+  }
+
+  /* Grano de papel impreso */
+  .grano {
+    position: absolute;
+    inset: -50%;
+    opacity: 0.09;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grano 1.2s steps(4) infinite;
+  }
+  @keyframes grano {
+    25% { transform: translate(-3%, 2%); }
+    50% { transform: translate(2%, -3%); }
+    75% { transform: translate(-2%, -1%); }
+  }
+
+  .splash-rejilla {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 80px);
+    align-items: center;
+    width: min(1180px, 100% - 48px);
+    transition: transform 0.7s ease;
+  }
+
+  /* Arte en ventana con arco, zoom muy lento */
+  .arte {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 523 / 551;
+    max-height: 78vh;
+    overflow: hidden;
+    border-radius: 999px 999px 6px 6px;
+    box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(241 236 208 / 0.12);
+    animation: subir 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .arte img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: respirar 18s ease-in-out infinite alternate;
+  }
+  .arte::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(15 26 22 / 0.75), transparent 35%);
+  }
+  .arte figcaption {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    font: 500 0.78rem/1.2 var(--f-cond);
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  @keyframes respirar {
+    from { transform: scale(1.02) translateY(0); }
+    to { transform: scale(1.12) translateY(-2%); }
+  }
+
+  .texto > * {
+    animation: subir 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .texto > :nth-child(1) { animation-delay: 0.25s; }
+  .texto > :nth-child(2) { animation-delay: 0.4s; }
+  .texto > :nth-child(3) { animation-delay: 0.55s; }
+  .texto > :nth-child(4) { animation-delay: 0.65s; }
+  .texto > :nth-child(5) { animation-delay: 0.8s; }
+  .texto > :nth-child(6) { animation-delay: 1s; }
+  .firma {
+    display: block;
+    width: fit-content;
+    margin-top: 22px;
+    color: rgb(241 236 208 / 0.7);
+    font: 500 1rem/1.2 var(--f-cond);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .firma strong {
+    color: var(--crema);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    border-bottom: 2px solid var(--naranja);
+  }
+  .firma:hover {
+    color: var(--crema);
+  }
+  .firma:focus-visible {
+    outline: 3px solid var(--crema);
+    outline-offset: 4px;
+  }
+  @keyframes subir {
+    from { opacity: 0; transform: translateY(24px); }
+  }
+
+  .logo {
+    display: block;
+    width: clamp(160px, 22vw, 280px);
+    height: auto;
+    margin-bottom: clamp(16px, 3vh, 32px);
+    filter: drop-shadow(0 8px 24px rgb(227 38 28 / 0.35));
+  }
+  h2 {
+    margin: 0;
+    display: grid;
+    font: 400 clamp(2.2rem, 5.6vw, 4.8rem) / 0.95 var(--f-display);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  h2 span:last-child {
+    color: var(--naranja);
+  }
+  .fechas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: baseline;
+    margin: 18px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgb(241 236 208 / 0.2);
+    font: 700 clamp(1rem, 1.6vw, 1.3rem) / 1.2 var(--f-cond);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .fechas em {
+    font-style: normal;
+    font-weight: 500;
+    opacity: 0.65;
+  }
+  .bajada {
+    max-width: 34ch;
+    margin: 12px 0 0;
+    font: 500 clamp(1rem, 1.5vw, 1.2rem) / 1.4 var(--f-cond);
+    opacity: 0.8;
+  }
+  .entrar {
+    display: inline-flex;
+    gap: 14px;
+    align-items: center;
+    margin-top: clamp(20px, 4vh, 36px);
+    padding: 16px 28px;
+    border: 0;
+    background: var(--naranja);
+    color: var(--tinta);
+    font: 400 1.2rem/1 var(--f-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 6px 6px 0 var(--rojo);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .entrar span {
+    transition: transform 0.2s;
+  }
+  .entrar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--rojo);
+  }
+  .entrar:hover span {
+    transform: translateX(4px);
+  }
+  .entrar:focus-visible {
+    outline: 3px solid var(--crema);
+    outline-offset: 4px;
+  }
+
+  /* Bandada */
+  .bandada {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ave {
+    position: absolute;
+    left: -80px;
+    width: 56px;
+    fill: var(--crema);
+    opacity: 0;
+    animation: volar 14s linear infinite;
+  }
+  .ave-ojo {
+    fill: var(--tinta-splash);
+  }
+  .ave-ala {
+    fill: #c9c2a4;
+    transform-origin: 24px 24px;
+    animation: aletear 0.45s ease-in-out infinite alternate;
+  }
+  .ave {
+    filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.45));
+  }
+  /* pasado, presente y futuro: tres tamaños, tres alturas */
+  .ave-0 { top: 10%; animation-delay: 0.6s; width: clamp(56px, 6vw, 84px); }
+  .ave-1 { top: 17%; animation-delay: 1.5s; width: clamp(72px, 8vw, 112px); }
+  .ave-2 { top: 7%; animation-delay: 2.4s; width: clamp(44px, 4.5vw, 64px); }
+  @keyframes volar {
+    0% { transform: translate(0, 0); opacity: 0; }
+    6% { opacity: 0.9; }
+    50% { transform: translate(55vw, -4vh); }
+    94% { opacity: 0.9; }
+    100% { transform: translate(calc(100vw + 160px), 3vh); opacity: 0; }
+  }
+  @keyframes aletear {
+    to { transform: scaleY(-0.6); }
+  }
+
+  @media (max-width: 760px) {
+    .splash {
+      place-items: start center;
+      overflow-y: auto;
+    }
+    .splash-rejilla {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      width: calc(100% - 32px);
+      padding: 20px 0 32px;
+    }
+    .arte {
+      max-height: 42vh;
+      aspect-ratio: auto;
+      height: 42vh;
+      border-radius: 200px 200px 6px 6px;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 12px;
+    }
+    .entrar {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .splash *,
+    .splash *::before,
+    .splash *::after {
+      animation: none !important;
+    }
+    .ave {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const CLAVE = 'ruta-rap-2026-intro-vista';
+  const splash = document.querySelector<HTMLElement>('[data-splash]')!;
+  const entrar = splash.querySelector<HTMLButtonElement>('[data-entrar]')!;
+
+  const abrir = () => {
+    splash.hidden = false;
+    splash.classList.remove('saliendo');
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => entrar.focus({ preventScroll: true }));
+  };
+  const cerrar = () => {
+    splash.classList.add('saliendo');
+    document.documentElement.style.overflow = '';
+    try {
+      sessionStorage.setItem(CLAVE, '1');
+    } catch {
+      /* sin almacenamiento: se mostrará de nuevo al recargar */
+    }
+    setTimeout(() => (splash.hidden = true), 700);
+  };
+
+  entrar.addEventListener('click', () => {
+    window.umami?.track('splash-entrar');
+    cerrar();
+  });
+  splash.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') cerrar();
+    if (e.key === 'Tab') {
+      // El foco circula solo entre los controles del splash (botón y firma).
+      const controles = [...splash.querySelectorAll<HTMLElement>('button, a[href]')];
+      const i = controles.indexOf(document.activeElement as HTMLElement);
+      e.preventDefault();
+      controles[(i + (e.shiftKey ? -1 : 1) + controles.length) % controles.length].focus();
+    }
+  });
+  document.querySelectorAll('[data-ver-intro]').forEach((b) => b.addEventListener('click', abrir));
+
+  if (!splash.hidden) abrir();
+</script>
